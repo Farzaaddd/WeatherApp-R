@@ -53,6 +53,11 @@ header .header-container .search-form .search-input input:focus {
   box-shadow: var(--box-shadow) 0px 0px 0px 3px;
 }
 
+.search-form:has(.view-list.active):focus-within input {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 header .header-container .search-form .search-icon {
   position: absolute;
   padding: 5px;
@@ -89,11 +94,6 @@ header .header-container .search-form .current-location {
 
 .search-input:focus-within .search-result.active {
   display: block;
-}
-
-.search-form:has(.search-result.active):focus-within #search-city {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
 header .header-container .personal-accessibility {
@@ -228,6 +228,11 @@ header .header-container .personal-accessibility .notification .badge::before {
   background-color: var(--pink-color);
 }
 
+.search-form:has(.search-result.active):focus-within #search-city {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .view-list {
   position: absolute;
   width: 100%;
@@ -256,7 +261,11 @@ header .header-container .personal-accessibility .notification .badge::before {
 .view-item .view-items {
   display: flex;
   align-items: center;
-  line-height: 20px;
+  line-height: 5px;
+}
+
+.view-item a {
+  text-decoration: none;
 }
 
 .view-item .view-items i {
@@ -313,6 +322,8 @@ header .header-container .personal-accessibility .notification .badge::before {
   }
 
   .view-list {
-    width: 70% !important;
+    top: 22px;
+    width: calc(60% - 3px);
+    /* width: 60% !important; */
   }
 }
