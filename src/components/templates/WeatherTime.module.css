@@ -1,0 +1,64 @@
+nav .weatherTime .time {
+  font-size: 2.7em;
+  padding: 5px;
+  margin: 0;
+  font-weight: 600;
+  color: #538ed5;
+}
+
+.weatherTime .name img {
+  width: 30px;
+  vertical-align: middle;
+}
+
+@media (max-width: 1199px) {
+  .weatherTime {
+    overflow: hidden;
+    line-height: 45px;
+  }
+
+  .weatherTime .time {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: #edcd95;
+  }
+
+  .weatherTime span {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  nav .weatherTime span.username {
+    color: #e91e63;
+  }
+}
+
+@media (min-width: 1200px) {
+  nav {
+    width: 300px;
+    height: auto;
+    padding: 10px 30px;
+    background-color: #f4d49b;
+    border-radius: 20px;
+    margin-bottom: 35px;
+  }
+  /* .weatherTime {
+    line-height: 45px;
+    padding: 30px;
+  } */
+
+  .weatherTime .date {
+    font-size: 1em;
+    margin-left: 10px;
+    color: #004d40;
+  }
+
+  .weatherTime span {
+    font-size: 20px;
+    color: #004d40;
+  }
+
+  .weatherTime span.username {
+    color: #538ed5;
+  }
+}

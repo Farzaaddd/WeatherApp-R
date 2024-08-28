@@ -1,0 +1,69 @@
+.current-loc {
+  position: relative;
+  margin: 30px 15px;
+  width: 344px;
+  min-height: 100px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10px;
+}
+
+.current-loc .divided {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.current-loc .descriptions {
+  display: flex;
+  justify-content: space-evenly;
+  color: #fff;
+  font-size: 15px;
+}
+
+.current-loc .descriptions.distance {
+  padding-bottom: 15px;
+}
+
+.current-loc .location-name {
+  width: 40%;
+}
+
+.current-loc .descriptions .km-description {
+  margin-left: 10px;
+}
+
+.current-loc .location-name .weather-name {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.current-loc .location-name .weather-degree {
+  font-size: 60px;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+}
+
+.current-loc:nth-child(2) {
+  background-color: #fd3866;
+  border: 1px solid #fd6484;
+  margin: 0;
+}
+
+.current-loc:nth-child(3) {
+  background-color: #297272;
+  border: 1px solid #000;
+}
+
+.current-new-box {
+  border-radius: 20px;
+  width: 335px;
+  margin-top: -175px;
+  min-height: 115px;
+  background-color: #1a4146;
+  border: 4px dashed #162e48;
+}

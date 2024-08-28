@@ -1,11 +1,9 @@
-import WeatherResponse from "./components/templates/WeatherResponse";
-import Header from "./layout/Header";
+import Route from "./route/route"
 
 const App = () => {
   return (
     <div>
-      <Header/>
-      <WeatherResponse/>
+      <Route/>
     </div>
   )
 }

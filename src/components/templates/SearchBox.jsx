@@ -1,26 +1,27 @@
 import { useEffect, useState } from "react"
 import { useMutation } from "@tanstack/react-query";
-import { currentLoc, GetSearch, getWeather } from "../../config/api";
+import { currentLoc, getReload, GetSearch, getWeather } from "../../config/api";
 
 import SearchIcon from '@mui/icons-material/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Loader from "./Loader";
 
-const SearchBox = () => {
+const SearchBox = ({setWeather}) => {
   const { mutate, isLoading } = useMutation(GetSearch); 
   const { mutate: mutateW, isLoading: isLoading2 } = useMutation(getWeather); 
   const { mutate: mutateL, isLoading: isLoading3 } = useMutation(currentLoc); 
+  const { mutate: mutateR, isLoading: isLoading4 } = useMutation(getReload); 
 
     const [search, setSearch] = useState("");
     const [display, setDisplay] = useState("");
-    const [weather, setWeather] = useState("");
     
 
     useEffect(() => {
-      mutate(search, {
+      search && mutate(search, {
         onSuccess: (fetchedData) => {
           const result = fetchedData.data;
           setDisplay(result)
-        }
+        },
       })
 
       if (!window.location.hash) {
@@ -28,8 +29,6 @@ const SearchBox = () => {
       } else {
         checkHash();
       }
-      
-      console.log(weather);
     }, [search])
 
     const weatherHandler = (lat, lon) => {
@@ -55,6 +54,7 @@ const SearchBox = () => {
             onSuccess: (fetchedData) => {
               const result = fetchedData.data;
               setWeather(result)
+              window.location.hash = "/current-location";
               console.log(result);
             }
           })
@@ -66,8 +66,6 @@ const SearchBox = () => {
         }
     );
     }
-    console.log(display)
-    console.log(weather)
     
 
     const checkHash = function () {
@@ -80,13 +78,20 @@ const SearchBox = () => {
     };
   
     const searchedLocation = (query) => {
-      weatherHandler(...query.split("&"));
+      mutateR(query, {
+        onSuccess: (fetchedData) => {
+          const result = fetchedData.data;
+          setWeather(result)
+        }
+      })
     };
 
     const routes = new Map([
       ["/current-location", currentLocation],
       ["/weather", searchedLocation],
     ]);
+
+    if (isLoading || isLoading2 || isLoading3 || isLoading4) return <Loader/>
   return (
     <>
         <div className="search-form">

@@ -1,0 +1,94 @@
+.weather-response {
+  position: relative;
+  padding: 20px;
+  width: 300px;
+  min-height: 350px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  background-size: cover;
+}
+
+.header-weather {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name-weather {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.location-name .name-weather i {
+  margin-right: 10px;
+}
+
+.header-icon {
+  position: relative;
+}
+
+.header-icon .circle {
+  width: 65px;
+  height: 65px;
+  position: absolute;
+  top: -2px;
+  right: -6px;
+  border-radius: 50%;
+  /* background-image: url("../../assets/icons/openweathermap/10n.svg"); */
+  z-index: 10;
+}
+
+.header-icon .circle-child2 {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: -9px;
+  right: -13px;
+  border-radius: 50%;
+  background-color: #dcecfc !important;
+  box-shadow: -3px 1px 4px 6px rgba(220, 236, 252, 0.72);
+  -webkit-box-shadow: -3px 1px 4px 6px rgba(220, 236, 252, 0.72);
+  -moz-box-shadow: -5px 0px 0px 0px;
+  opacity: 0.5;
+}
+
+.body-weather {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.body-weather .weather-date {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.body-weather .weather-degree {
+  font-size: 4.5em;
+  font-weight: 700;
+}
+
+.body-weather .weather-description {
+  margin-top: 10px;
+  font-size: 22px;
+}
+
+.descriptions .icon-description img {
+  width: 30px;
+  vertical-align: middle;
+}
+
+#special {
+  visibility: hidden;
+}
+
+@media (min-width: 1200px) {
+  .body-weather .descriptions {
+    margin-top: 10px;
+    padding: 10px 65px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+  }
+}
