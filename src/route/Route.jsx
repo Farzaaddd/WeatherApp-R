@@ -4,9 +4,11 @@ import Header from "../layout/Header"
 import calculateLocalTime from "../constants/localTime";
 import WeatherTime from "../components/templates/WeatherTime";
 
-import styles from "./Route.module.css";
 import Dubai from "../components/templates/Dubai";
 import NewYork from "../components/templates/NewYork";
+import Suntime from "../components/templates/Suntime";
+
+import styles from "./Route.module.css";
 
 const Route = () => {
   const [weather, setWeather] = useState("");
@@ -36,7 +38,7 @@ const Route = () => {
     }
     
     // let greeting;
-  }, [weather])
+  }, [weather, time])
 
   return (
     <>
@@ -48,9 +50,19 @@ const Route = () => {
           <NewYork/>
         </div>
 
-        <div>
-          <WeatherTime time={time} setTime={setTime} checkDay={checkDay} greeting={greeting}/>
+        <div className={styles.sunAir}>
+          <div>
+            <Suntime data={weather}/>
+          </div>
+          
+          <div className={styles.timezoneAir}>
+            <WeatherTime time={time} setTime={setTime} checkDay={checkDay} greeting={greeting}/>
+          </div>
         </div>
+
+        {/* <div>
+          <WeatherTime time={time} setTime={setTime} checkDay={checkDay} greeting={greeting}/>
+        </div> */}
       </div>
     </>
   )

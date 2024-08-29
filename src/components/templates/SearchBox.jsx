@@ -7,10 +7,10 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Loader from "./Loader";
 
 const SearchBox = ({setWeather}) => {
-  const { mutate, isLoading } = useMutation(GetSearch); 
-  const { mutate: mutateW, isLoading: isLoading2 } = useMutation(getWeather); 
-  const { mutate: mutateL, isLoading: isLoading3 } = useMutation(currentLoc); 
-  const { mutate: mutateR, isLoading: isLoading4 } = useMutation(getReload); 
+  const { mutate } = useMutation(GetSearch); 
+  const { mutate: mutateW } = useMutation(getWeather); 
+  const { mutate: mutateL } = useMutation(currentLoc); 
+  const { mutate: mutateR } = useMutation(getReload); 
 
     const [search, setSearch] = useState("");
     const [display, setDisplay] = useState("");
@@ -91,7 +91,6 @@ const SearchBox = ({setWeather}) => {
       ["/weather", searchedLocation],
     ]);
 
-    if (isLoading || isLoading2 || isLoading3 || isLoading4) return <Loader/>
   return (
     <>
         <div className="search-form">

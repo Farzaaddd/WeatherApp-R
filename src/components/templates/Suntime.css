@@ -1,0 +1,99 @@
+.suntime {
+  width: 400px;
+  min-height: 500px;
+  background-color: #162e48;
+  border-radius: 20px;
+  padding: 5px 30px 30px;
+}
+
+.suntime h2 {
+  color: #fff;
+}
+
+.custom-background {
+  background-color: #254367;
+  padding: 10px 30px;
+  border-radius: 20px;
+  margin: 20px 0 50px;
+}
+
+.suntime-name .city-name {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.suntime-name .city-name div span {
+  color: #fff;
+}
+
+.suntime-name svg {
+  vertical-align: middle;
+  color: #edcd94;
+}
+
+.suntime-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 17px;
+  line-height: 7px;
+}
+
+.suntime-time p {
+  font-size: 14px;
+}
+
+.suntime-time p:nth-child(1) {
+  font-size: 14px;
+  color: #adb7c1;
+}
+
+.suntime-time p:nth-child(2) {
+  font-size: 14px;
+  font-weight: 600;
+  color: #edcd94;
+}
+
+.suntime-time img {
+  width: 40px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.suntime-time .sunrise,
+.suntime-time .sunset {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.highlight-cities {
+  background-color: #d0d0d0;
+  padding: 10px 30px;
+  border-radius: 20px;
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 40px;
+}
+
+.highlight-cities .cities {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 0;
+}
+
+.highlight-cities .cities .city-name h3 {
+  color: #000;
+}
+
+.highlight-cities svg {
+  margin-right: 5px;
+  color: #e91e63;
+}
+
+.highlight-cities .cities p {
+  color: #538ed5;
+}
