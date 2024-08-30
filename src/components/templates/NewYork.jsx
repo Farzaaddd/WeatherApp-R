@@ -5,7 +5,6 @@ import Loader from "./Loader";
 
 const NewYork = () => {
     const {data, isLoading, isError} = useQuery(["ny-climate"], newYorkClimate) 
-    console.log({ data, isLoading });
   
     if (isLoading) return <Loader/>
 

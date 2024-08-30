@@ -33,6 +33,22 @@ const newYorkClimate = () =>
     `${API}/data/2.5/weather?q=New%20York&units=metric&appid=${API_KEY}`
   );
 
+// Air population by searching a location
+const Pollution = (location) =>
+  axios.get(
+    `${API}/data/2.5/air_pollution?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}`
+  );
+
+// Air population by reloading and hash page
+const airPollution = ({ query }) =>
+  axios.get(`${API}/data/2.5/air_pollution?${query}&appid=${API_KEY}`);
+
+// Air population by current loc hash page
+const currentPollution = ({ latitude, longitude }) =>
+  axios.get(
+    `${API}/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+  );
+
 export {
   GetSearch,
   getWeather,
@@ -40,4 +56,7 @@ export {
   currentLoc,
   DubaiClimate,
   newYorkClimate,
+  Pollution,
+  airPollution,
+  currentPollution,
 };

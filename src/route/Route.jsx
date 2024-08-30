@@ -9,12 +9,15 @@ import NewYork from "../components/templates/NewYork";
 import Suntime from "../components/templates/Suntime";
 
 import styles from "./Route.module.css";
+import AirPollution from "../components/templates/AirPollution";
 
 const Route = () => {
   const [weather, setWeather] = useState("");
   const [checkDay, setCheckDay] = useState("");
   const [time, setTime] = useState(null);
   const [greeting, setGreeting] = useState("");
+
+  const [pollution, setPollution] = useState(null);
   
 
   useEffect(() => {
@@ -23,8 +26,6 @@ const Route = () => {
     let hour = localTime.getHours();
     let localSharing = localTime.toLocaleTimeString();
     setTime(localSharing)
-
-    console.log(greeting);
 
     if (hour >= 5 && hour < 12) {
       setGreeting("Have a good day,");
@@ -39,10 +40,9 @@ const Route = () => {
     
     // let greeting;
   }, [weather, time])
-
   return (
     <>
-      <Header setWeather={setWeather}/>
+      <Header setWeather={setWeather} setPollution={setPollution}/>
       <div className={styles.display}>
         <div>
           <WeatherResponse weather={weather} checkDay={checkDay}/>
@@ -57,6 +57,8 @@ const Route = () => {
           
           <div className={styles.timezoneAir}>
             <WeatherTime time={time} setTime={setTime} checkDay={checkDay} greeting={greeting}/>
+            <AirPollution pollution={pollution}/>
+
           </div>
         </div>
 

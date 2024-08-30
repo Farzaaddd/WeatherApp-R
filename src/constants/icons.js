@@ -28,6 +28,8 @@ import icon24 from "../assets/icons/weather-icons/feels2.png";
 import sunrise from "../assets/icons/weather-icons/sunrise.png";
 import sunset from "../assets/icons/weather-icons/sunset.png";
 
+import windIcon from "../assets/icons/weather-icons/wind.png";
+
 const icons = [
   { path: icon1 },
   { path: icon2 },
@@ -58,6 +60,8 @@ const icons = [
 
   { path: sunrise },
   { path: sunset },
+
+  { path: windIcon },
 ];
 
 export default icons;

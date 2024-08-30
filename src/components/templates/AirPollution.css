@@ -1,0 +1,100 @@
+.forecast::-webkit-scrollbar,
+.air-quality .status-forecast::-webkit-scrollbar {
+  display: none;
+}
+
+.air-quality {
+  width: 90%;
+  background-color: #d0d0d0;
+  border-radius: 20px;
+  padding: 23px;
+  line-height: 40px;
+}
+
+.air-quality .badge,
+.badge-desk {
+  padding: 0 4px;
+  border-radius: 10px;
+  background-color: #254367;
+  color: #fff;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.air-quality .status-forecast {
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.air-quality .status-forecast .status-forecast-structure {
+  width: 100px;
+  height: 115px;
+  padding: 0px 10px;
+  margin: 10px 5px 0;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #cce7e9;
+  color: #12d962;
+}
+
+.air-quality .status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 26px;
+}
+
+.air-quality .status-group {
+  margin: 0 10px;
+}
+
+.air-quality .status div img {
+  width: 30px;
+}
+
+.air-quality .status .status-group div:nth-child(1) {
+  color: #e91e63;
+}
+
+.air-quality .status .aqi-message {
+  color: #12d962 !important;
+  font-size: 15px;
+}
+
+.air-quality .status .status-group div:nth-child(2) {
+  color: #538ed5;
+}
+
+@media (max-width: 1199px) {
+  .current-loc-title,
+  .air-quality-title {
+    color: #fff;
+  }
+
+  .air-quality {
+    margin-top: 20px;
+  }
+
+  .air-quality .status .status-forecast {
+    margin: 0 auto;
+  }
+
+  .air-quality .status-forecast .status-forecast-structure {
+    width: 70px;
+    height: 90px;
+  }
+}
+
+@media screen and (min-width: 830px) and (max-width: 870px) {
+  .air-quality .status .status-group {
+    margin-right: 390px;
+  }
+}
+
+@media screen and (min-width: 963px) and (max-width: 1080px) {
+  .air-quality .status .status-group {
+    margin-right: 650px;
+  }
+}
