@@ -50,6 +50,8 @@ const currentPollution = ({ latitude, longitude }) =>
   );
 
 export {
+  API,
+  API_KEY,
   GetSearch,
   getWeather,
   getReload,

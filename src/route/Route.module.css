@@ -6,6 +6,9 @@
 
 .sunAir {
   width: 70%;
+}
+
+.sunAirW {
   display: flex;
   justify-content: space-around;
 }

@@ -10,6 +10,7 @@ import Suntime from "../components/templates/Suntime";
 
 import styles from "./Route.module.css";
 import AirPollution from "../components/templates/AirPollution";
+import Forecast from "../components/templates/Forecast";
 
 const Route = () => {
   const [weather, setWeather] = useState("");
@@ -18,6 +19,8 @@ const Route = () => {
   const [greeting, setGreeting] = useState("");
 
   const [pollution, setPollution] = useState(null);
+
+  const [forecast, setForecast] = useState(null);
   
 
   useEffect(() => {
@@ -42,7 +45,7 @@ const Route = () => {
   }, [weather, time])
   return (
     <>
-      <Header setWeather={setWeather} setPollution={setPollution}/>
+      <Header setWeather={setWeather} setPollution={setPollution} setForecast={setForecast}/>
       <div className={styles.display}>
         <div>
           <WeatherResponse weather={weather} checkDay={checkDay}/>
@@ -51,20 +54,23 @@ const Route = () => {
         </div>
 
         <div className={styles.sunAir}>
-          <div>
-            <Suntime data={weather}/>
+          <div className={styles.sunAirW}>
+            <div>
+              <Suntime data={weather}/>
+            </div>
+            
+            <div className={styles.timezoneAir}>
+              <WeatherTime time={time} setTime={setTime} checkDay={checkDay} greeting={greeting}/>
+              <AirPollution pollution={pollution}/>
+            </div>
           </div>
-          
-          <div className={styles.timezoneAir}>
-            <WeatherTime time={time} setTime={setTime} checkDay={checkDay} greeting={greeting}/>
-            <AirPollution pollution={pollution}/>
 
+          <div>
+            <Forecast forecast={forecast}/>
           </div>
+
         </div>
 
-        {/* <div>
-          <WeatherTime time={time} setTime={setTime} checkDay={checkDay} greeting={greeting}/>
-        </div> */}
       </div>
     </>
   )

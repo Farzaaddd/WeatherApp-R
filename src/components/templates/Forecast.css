@@ -1,0 +1,78 @@
+.forecast {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 22px;
+  overflow-x: auto;
+}
+
+.forecast::-webkit-scrollbar,
+.air-quality .status-forecast::-webkit-scrollbar {
+  display: none;
+}
+
+.forecast .day-description {
+  margin-top: -10px;
+  font-size: 16px;
+}
+
+.forecast .day {
+  width: 120px;
+  height: 180px;
+  text-align: center;
+  border-radius: 20px;
+  margin: 0 5px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #162e48;
+}
+
+.forecast .day img {
+  width: 100px;
+}
+
+.air-quality .status-forecast {
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.air-quality .status-forecast .status-forecast-structure {
+  width: 100px;
+  height: 90px;
+  padding: 0px 10px;
+  margin: 10px 5px 0;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #cce7e9;
+  color: #12d962;
+}
+
+@media (max-width: 1199px) {
+  .forecast .day {
+    margin: 0 5px;
+  }
+
+  .air-quality .status .status-forecast {
+    margin: 0 auto;
+  }
+
+  .air-quality .status-forecast .status-forecast-structure {
+    width: 70px;
+    height: 90px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .forecast {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (min-width: 840px) and (max-width: 1200px) {
+  .forecast {
+    justify-content: center;
+  }
+}

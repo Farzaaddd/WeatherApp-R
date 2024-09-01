@@ -1,7 +1,7 @@
 .current-loc {
   position: relative;
-  margin: 30px 15px;
-  width: 344px;
+  margin: 50px 15px 25px;
+  width: 330px;
   min-height: 100px;
   border-radius: 15px;
   display: flex;
@@ -61,9 +61,9 @@
 
 .current-new-box {
   border-radius: 20px;
-  width: 335px;
-  margin-top: -175px;
-  min-height: 115px;
+  width: 340px;
+  margin-top: -190px;
+  min-height: 125px;
   background-color: #1a4146;
   border: 4px dashed #162e48;
 }
