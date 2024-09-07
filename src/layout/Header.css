@@ -8,6 +8,9 @@
   --body-back: #254367;
   --quality-background: #adb7c1;
   --forecast-background: #d0d0d0;
+
+  /* shadow  */
+  --box-shadow: rgba(3, 102, 214, 0.3);
 }
 
 img {
@@ -292,10 +295,46 @@ header .header-container .personal-accessibility .notification .badge::before {
   filter: drop-shadow(var(--body-back));
 }
 
+header .notifications-messages {
+  display: none;
+  position: absolute;
+  top: 70px;
+  right: 40px;
+  z-index: 5;
+  margin-right: 10%;
+  margin-bottom: 20px;
+}
+
+header .notifications-messages svg {
+  font-size: 20px;
+  vertical-align: sub;
+  color: gold;
+}
+
+header .notifications-messages.active {
+  display: block;
+}
+
+header .notifications-messages .notifications {
+  direction: ltr;
+  border-radius: 10px;
+  padding: 20px 10px;
+  width: 300px;
+  background-color: var(--quality-background);
+}
+
+header .notifications-messages .notifications div {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  background-color: var(--body-back);
+}
+
 /* Responsive  */
 @media (max-width: 1199px) {
   header .header-container .search-form {
-    width: 50%;
+    width: 90%;
   }
 
   header .header-container .search-form .search-input input {
@@ -306,13 +345,18 @@ header .header-container .personal-accessibility .notification .badge::before {
     right: 10px;
   }
 
-  header .header-container .search-form {
+  /* header .header-container .search-form {
     display: none;
     margin-left: 20px;
-  }
+  } */
 
   header .header-container .search-form.active {
     display: block;
+  }
+
+  .view-list {
+    top: 23px;
+    width: calc(90% - 2px);
   }
 }
 
@@ -325,5 +369,21 @@ header .header-container .personal-accessibility .notification .badge::before {
     top: 22px;
     width: calc(60% - 3px);
     /* width: 60% !important; */
+  }
+
+  header .notifications-messages {
+    top: 70px;
+    right: 0px;
+  }
+
+  header .notifications-messages .notifications {
+    width: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .view-list {
+    top: 23px;
+    width: calc(85% - 4px);
   }
 }

@@ -51,6 +51,10 @@
 }
 
 @media (max-width: 1199px) {
+  .forecast {
+    width: auto;
+  }
+
   .forecast .day {
     margin: 0 5px;
   }

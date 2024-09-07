@@ -1,7 +1,8 @@
-import { useEffect } from "react";
 import "./WeatherResponse.css"
 import {backgroundOpt, wIcon} from "../../helper/helper";
 import icons from "../../constants/icons";
+
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const WeatherResponse = ({weather, checkDay}) => {
   
@@ -11,7 +12,7 @@ const WeatherResponse = ({weather, checkDay}) => {
         <div className="weather-response" style={{backgroundImage: backgroundOpt(weather.weather[0].main, checkDay), color: checkDay === "night" ? "#fff" : "#000"}}>
         <div className="header-weather">
           <div className="name-weather">
-            <i className="fa fa-map-marker" aria-hidden="true"></i>
+            <LocationOnIcon/>
             {weather.name} / {weather.sys.country}
           </div>
           <div className="header-icon">

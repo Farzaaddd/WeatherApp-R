@@ -16,3 +16,9 @@
 .sunAir .timezoneAir {
   width: 40%;
 }
+
+@media (max-width: 1199px) {
+  .display {
+    justify-content: center;
+  }
+}

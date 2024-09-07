@@ -11,6 +11,7 @@ import Suntime from "../components/templates/Suntime";
 import styles from "./Route.module.css";
 import AirPollution from "../components/templates/AirPollution";
 import Forecast from "../components/templates/Forecast";
+import Footer from "../layout/Footer";
 
 const Route = () => {
   const [weather, setWeather] = useState("");
@@ -22,6 +23,7 @@ const Route = () => {
 
   const [forecast, setForecast] = useState(null);
   
+  const windowSize = window.innerWidth;
 
   useEffect(() => {
     const cityTimezoneOffset = weather.timezone; // Example timezone offset for New York City (in seconds, here -14400 represents UTC-4)
@@ -41,19 +43,34 @@ const Route = () => {
       setCheckDay("night")
     }
     
+    
     // let greeting;
   }, [weather, time])
+
+
   return (
     <>
       <Header setWeather={setWeather} setPollution={setPollution} setForecast={setForecast}/>
       <div className={styles.display}>
-        <div>
+        <div style={{zIndex: 1}}>
           <WeatherResponse weather={weather} checkDay={checkDay}/>
-          <Dubai/>
-          <NewYork/>
+          {windowSize < 1199 && <> <Suntime data={weather}/> 
+          <div className={styles.timezoneAir}>
+          <WeatherTime time={time} setTime={setTime} checkDay={checkDay} greeting={greeting}/>
+          <AirPollution pollution={pollution}/>
+        </div>
+        </>
+          }
+      
+        {windowSize >= 1200 &&
+          <>
+            <Dubai/>
+            <NewYork/> 
+          </>
+        }
         </div>
 
-        <div className={styles.sunAir}>
+        {windowSize >= 1200 &&<div className={styles.sunAir}>
           <div className={styles.sunAirW}>
             <div>
               <Suntime data={weather}/>
@@ -69,9 +86,16 @@ const Route = () => {
             <Forecast forecast={forecast}/>
           </div>
 
-        </div>
+        </div>}
 
       </div>
+
+        {windowSize <= 1199 && 
+            <div style={{width: "450px", margin: "0 auto"}}>
+              <Forecast forecast={forecast}/>
+            </div>
+         }
+      <Footer/>
     </>
   )
 }

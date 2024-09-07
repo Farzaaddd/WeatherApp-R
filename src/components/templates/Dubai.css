@@ -67,3 +67,19 @@
   background-color: #1a4146;
   border: 4px dashed #162e48;
 }
+
+@media (max-width: 1199px) {
+  .current-loc {
+    width: 350px;
+  }
+
+  .newY {
+    background-color: #297272;
+    border: 1px solid #162e48;
+  }
+
+  .dubai {
+    background-color: #fd3866 !important;
+    border: 1px solid #fd6484 !important;
+  }
+}

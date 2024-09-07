@@ -7,7 +7,6 @@ import icons from "../../constants/icons";
 const AirPollution = ({pollution}) => {
     const [level, setLevel] = useState("");
     const [message, setMessage] = useState("");
-
     
     useEffect(() => {
         
@@ -42,6 +41,10 @@ const AirPollution = ({pollution}) => {
                 break;
         }
     }, [pollution])
+
+    const refreshHandler = () => {
+      window.location.reload();
+    }
   return (
     <>
         {pollution ?  <div className="air-quality">
@@ -62,7 +65,7 @@ const AirPollution = ({pollution}) => {
           </div>    
         </div>
 
-          <div className="badge-desk">
+          <div className="badge-desk" onClick={refreshHandler}>
             <small>Refresh</small>
           </div>
         </div>

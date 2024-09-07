@@ -12,7 +12,7 @@ const NewYork = () => {
 
   return (
     <>
-    <div className="current-loc">
+    <div className="current-loc newY">
         <div className="divided">
         <div className="descriptions">
           <div className="icon-description">

@@ -13,7 +13,7 @@ if (isLoading) return <Loader/>
 if (isError) return <h4> Something went wrong :( </h4>
 
   return (
-    <div className="current-loc">
+    <div className="current-loc dubai">
         <div className="divided">
           <div className="descriptions distance">
             <div className="icon-description">

@@ -98,3 +98,19 @@
 .highlight-cities .cities p {
   color: #538ed5;
 }
+
+@media (max-width: 1199px) {
+  .suntime {
+    width: 330px;
+    margin-bottom: 50px;
+  }
+
+  .suntime-name .city-name {
+    padding: 0 30px;
+    justify-content: space-between;
+  }
+
+  .suntime-time {
+    justify-content: space-around;
+  }
+}

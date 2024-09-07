@@ -68,6 +68,10 @@
 }
 
 @media (max-width: 1199px) {
+  .air-quality {
+    margin-bottom: 30px;
+    width: 350px;
+  }
   .current-loc-title,
   .air-quality-title {
     color: #fff;
@@ -84,17 +88,5 @@
   .air-quality .status-forecast .status-forecast-structure {
     width: 70px;
     height: 90px;
-  }
-}
-
-@media screen and (min-width: 830px) and (max-width: 870px) {
-  .air-quality .status .status-group {
-    margin-right: 390px;
-  }
-}
-
-@media screen and (min-width: 963px) and (max-width: 1080px) {
-  .air-quality .status .status-group {
-    margin-right: 650px;
   }
 }

@@ -3,7 +3,7 @@ import icons from "../constants/icons";
 
 const backgroundOpt = (weather, checkDay) => {
   let background;
-  if (window.innerWidth >= 1200 && checkDay === "night") {
+  if (window.innerWidth >= 0 && checkDay === "night") {
     switch (weather) {
       case "Clear":
         background = backgrounds[0].path;
@@ -58,7 +58,7 @@ const backgroundOpt = (weather, checkDay) => {
         break;
     }
     return background;
-  } else if (window.innerWidth >= 1200 && checkDay === "day") {
+  } else if (window.innerWidth >= 0 && checkDay === "day") {
     switch (weather) {
       case "Clear":
         background = backgrounds[1].path;

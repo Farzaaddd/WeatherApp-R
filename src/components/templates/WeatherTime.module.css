@@ -1,8 +1,32 @@
+nav {
+  background-color: #f4d49b;
+  width: 330px;
+  height: auto;
+  padding: 10px 30px;
+  border-radius: 20px;
+  margin-bottom: 60px;
+}
+
 nav .weatherTime .time {
   font-size: 2.7em;
   padding: 5px;
   margin: 0;
   font-weight: 600;
+  color: #538ed5;
+}
+
+.weatherTime span {
+  font-size: 20px;
+  color: #004d40;
+}
+
+.weatherTime .date {
+  font-size: 1em;
+  margin-left: 10px;
+  color: #004d40;
+}
+
+.weatherTime span.username {
   color: #538ed5;
 }
 
@@ -12,6 +36,10 @@ nav .weatherTime .time {
 }
 
 @media (max-width: 1199px) {
+  nav {
+    margin-top: 40px;
+  }
+
   .weatherTime {
     overflow: hidden;
     line-height: 45px;
@@ -25,7 +53,6 @@ nav .weatherTime .time {
 
   .weatherTime span {
     font-size: 20px;
-    color: #fff;
   }
 
   nav .weatherTime span.username {
@@ -35,12 +62,7 @@ nav .weatherTime .time {
 
 @media (min-width: 1200px) {
   nav {
-    width: 300px;
-    height: auto;
-    padding: 10px 30px;
-    background-color: #f4d49b;
-    border-radius: 20px;
-    margin-bottom: 60px;
+    width: 330px;
   }
   /* .weatherTime {
     line-height: 45px;
