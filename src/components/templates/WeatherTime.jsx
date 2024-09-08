@@ -80,7 +80,7 @@ const WeatherTime = ({ checkDay, time, setTime, greeting }) => {
           <span>
             &nbsp;
             {greeting}
-            <span className={styles.username}> {username}</span>
+            <span className={styles.username}> {username}!</span>
           </span>
         </p>
       </div>

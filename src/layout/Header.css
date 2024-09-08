@@ -239,7 +239,7 @@ header .header-container .personal-accessibility .notification .badge::before {
 .view-list {
   position: absolute;
   width: 100%;
-  z-index: 1;
+  z-index: 5;
   background-color: var(--forecast-background);
   line-height: 35px;
   list-style: none;
