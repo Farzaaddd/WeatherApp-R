@@ -8,7 +8,7 @@ const WeatherResponse = ({weather, checkDay}) => {
   
   return (
     <>
-      {weather ? <>
+      {weather && <>
         <div className="weather-response" style={{backgroundImage: backgroundOpt(weather.weather[0].main, checkDay), color: checkDay === "night" ? "#fff" : "#000"}}>
         <div className="header-weather">
           <div className="name-weather">
@@ -77,7 +77,7 @@ const WeatherResponse = ({weather, checkDay}) => {
         </div>
       </div>
         </div>
-      </> : null}
+      </>}
     </>
   )
 }

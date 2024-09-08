@@ -64,7 +64,7 @@ const WeatherTime = ({ checkDay, time, setTime, greeting }) => {
   return (
     <nav>
       <div className={styles.weatherTime}>
-        <p className={styles.time}>{time}</p>
+        <p className={styles.time}>{time && time}</p>
         <p className={styles.date}>
           {weekDayNames[currentDate.getDay()] +
             ", " +
