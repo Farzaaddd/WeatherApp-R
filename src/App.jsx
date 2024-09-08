@@ -1,9 +1,9 @@
-import Routers from "./route/Routers"
+import Paths from "./route/Paths"
 
 const App = () => {
   return (
     <div>
-      <Routers/>
+      <Paths/>
     </div>
   )
 }
