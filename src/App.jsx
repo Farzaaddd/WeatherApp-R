@@ -1,9 +1,9 @@
-import Route from "./route/Route"
+import Routers from "./route/Routers"
 
 const App = () => {
   return (
     <div>
-      <Route/>
+      <Routers/>
     </div>
   )
 }

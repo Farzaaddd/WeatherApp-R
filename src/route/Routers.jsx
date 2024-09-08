@@ -13,7 +13,7 @@ import AirPollution from "../components/templates/AirPollution";
 import Forecast from "../components/templates/Forecast";
 import Footer from "../layout/Footer";
 
-const Route = () => {
+const Routers = () => {
   const [weather, setWeather] = useState("");
   const [checkDay, setCheckDay] = useState("");
   const [time, setTime] = useState(null);
@@ -100,4 +100,4 @@ const Route = () => {
   )
 }
 
-export default Route
+export default Routers
