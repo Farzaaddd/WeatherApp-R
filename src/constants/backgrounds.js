@@ -7,7 +7,7 @@ import img5 from "../assets/images/backgrounds/rain-day.jpg";
 import img6 from "../assets/images/backgrounds/rain-night.jpg";
 import img7 from "../assets/images/backgrounds/snow.jpg";
 import img8 from "../assets/images/backgrounds/storm-day.jpg";
-import img9 from "../assets/images/backgrounds/storm-night.jpg";
+import img9 from "../assets/images/backgrounds/Storm-night.jpg";
 import img10 from "../assets/images/backgrounds/mist.jpg";
 import img11 from "../assets/images/backgrounds/sunny.jpg";
 import img12 from "../assets/images/backgrounds/foggy.jpg";
