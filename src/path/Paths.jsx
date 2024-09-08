@@ -8,10 +8,12 @@ import Dubai from "../components/templates/Dubai";
 import NewYork from "../components/templates/NewYork";
 import Suntime from "../components/templates/Suntime";
 
-import styles from "./Route.module.css";
 import AirPollution from "../components/templates/AirPollution";
 import Forecast from "../components/templates/Forecast";
 import Footer from "../layout/Footer";
+
+import styles from "./Route.module.css";
+
 
 const Paths = () => {
     const [weather, setWeather] = useState("");
