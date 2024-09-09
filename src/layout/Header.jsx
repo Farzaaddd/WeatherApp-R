@@ -3,14 +3,14 @@ import PersonalAccessibility from "../components/templates/PersonalAccessibility
 import SearchBox from "../components/templates/SearchBox"
 
 import "./Header.css"
-const Header = ({ setWeather, setPollution, setForecast}) => {
+const Header = ({search, setSearch, setWeather, setPollution, setForecast}) => {
   
 
   return (
     <header>
         <div className="header-container">
             {/* <SearchMenu/> */}
-            <SearchBox setWeather={setWeather} setPollution={setPollution} setForecast={setForecast}/>
+            <SearchBox search={search} setSearch={setSearch} setWeather={setWeather} setPollution={setPollution} setForecast={setForecast}/>
             <PersonalAccessibility/>
         </div>
     </header>

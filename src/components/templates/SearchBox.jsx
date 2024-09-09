@@ -6,7 +6,7 @@ import { format } from 'date-fns';
 import SearchIcon from '@mui/icons-material/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-const SearchBox = ({setWeather, setPollution, setForecast}) => {
+const SearchBox = ({search, setSearch, setWeather, setPollution, setForecast}) => {
   // get weather by search 
   const { mutate } = useMutation(GetSearch); 
 
@@ -26,7 +26,7 @@ const SearchBox = ({setWeather, setPollution, setForecast}) => {
 
   // get forecast 
 
-    const [search, setSearch] = useState("");
+    // const [search, setSearch] = useState("");
     const [display, setDisplay] = useState("");
     
 
