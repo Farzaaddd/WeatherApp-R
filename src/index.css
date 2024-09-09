@@ -4,5 +4,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: #254367;
-  font-family: cursive;
+}
+
+@media (min-width: 1100px) {
+  body {
+    font-family: cursive;
+  }
 }

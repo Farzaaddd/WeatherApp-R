@@ -3,7 +3,7 @@ import PersonalAccessibility from "../components/templates/PersonalAccessibility
 import SearchBox from "../components/templates/SearchBox"
 
 import "./Header.css"
-const Header = ({setWeather, setPollution, setForecast}) => {
+const Header = ({ setWeather, setPollution, setForecast}) => {
   
 
   return (

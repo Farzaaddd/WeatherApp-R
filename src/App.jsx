@@ -1,11 +1,11 @@
-import Paths from "./path/Paths"
+import Paths from "./path/Paths";
 
 const App = () => {
   return (
     <div>
-      <Paths/>
+      <Paths />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
