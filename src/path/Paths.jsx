@@ -11,8 +11,8 @@ import Forecast from "../components/templates/Forecast";
 import Footer from "../layout/Footer";
 import styles from "./Route.module.css";
 
-const Paths = ({weather, setWeather}) => {
-  // const [weather, setWeather] = useState("");
+const Paths = () => {
+  const [weather, setWeather] = useState("");
   const [checkDay, setCheckDay] = useState("");
   const [time, setTime] = useState(null);
   const [greeting, setGreeting] = useState("");
@@ -52,14 +52,14 @@ const Paths = ({weather, setWeather}) => {
               </div>
             </>
           )}
-          {windowSize >= 1200 && (
+          {windowSize >= 1200 && weather &&(
             <>
               <Dubai />
               <NewYork />
             </>
           )}
         </div>
-        {windowSize >= 1200 && (
+        {windowSize >= 1200 &&  weather && (
           <div className={styles.sunAir}>
             <div className={styles.sunAirW}>
               <div>
