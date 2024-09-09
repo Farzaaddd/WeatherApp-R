@@ -11,8 +11,8 @@ import Forecast from "../components/templates/Forecast";
 import Footer from "../layout/Footer";
 import styles from "./Route.module.css";
 
-const Paths = () => {
-  const [weather, setWeather] = useState("");
+const Paths = ({weather, setWeather}) => {
+  // const [weather, setWeather] = useState("");
   const [checkDay, setCheckDay] = useState("");
   const [time, setTime] = useState(null);
   const [greeting, setGreeting] = useState("");
