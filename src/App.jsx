@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Paths from "./path/Paths";
-import { currentLoc, currentPollution } from './config/api';
+import { API, API_KEY, currentLoc, currentPollution } from './config/api';
 import { useMutation } from '@tanstack/react-query';
 
 const App = () => {
@@ -73,7 +73,7 @@ const App = () => {
       
       // checkHash();
     }
-  }, []);
+  }, [weather]);
 
   return (
     <div>
