@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Paths from "./path/Paths";
+import { currentLoc, currentPollution } from './config/api';
+import { useMutation } from '@tanstack/react-query';
 
 const App = () => {
   const [weather, setWeather] = useState("");
   const [pollution, setPollution] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [search, setSearch] = useState("");
+
+  const { mutate: mutateL } = useMutation(currentLoc); 
+  const { mutate: mutateC } = useMutation(currentPollution); // hash(current loc)
+
 
   useEffect(() => {
     if (!window.location.hash) {
