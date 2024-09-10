@@ -11,13 +11,13 @@ import Forecast from "../components/templates/Forecast";
 import Footer from "../layout/Footer";
 import styles from "./Route.module.css";
 
-const Paths = ({search, setSearch}) => {
-  const [weather, setWeather] = useState("");
+const Paths = ({search, setSearch, weather, setWeather, forecast, setForecast, pollution,  setPollution}) => {
+  // const [weather, setWeather] = useState("");
   const [checkDay, setCheckDay] = useState("");
   const [time, setTime] = useState(null);
   const [greeting, setGreeting] = useState("");
-  const [pollution, setPollution] = useState(null);
-  const [forecast, setForecast] = useState(null);
+  // const [pollution, setPollution] = useState(null);
+  // const [forecast, setForecast] = useState(null);
 
   const windowSize = window.innerWidth;
 
