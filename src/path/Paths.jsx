@@ -35,6 +35,9 @@ const Paths = ({search, setSearch}) => {
       setGreeting("Have a good night,");
       setCheckDay("night");
     }
+
+    console.log({weather, time, search});
+    
   }, [weather, time, search]);
 
   return (
