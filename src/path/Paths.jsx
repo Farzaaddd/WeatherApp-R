@@ -11,7 +11,7 @@ import Forecast from "../components/templates/Forecast";
 import Footer from "../layout/Footer";
 import styles from "./Route.module.css";
 import { useMutation } from "@tanstack/react-query";
-import { airPollution, API, API_KEY, currentLoc, getReload } from "../config/api";
+import { airPollution, API, API_KEY, currentLoc, currentPollution, getReload } from "../config/api";
 import { format } from "date-fns";
 
 const Paths = ({search, setSearch}) => {
@@ -24,9 +24,12 @@ const Paths = ({search, setSearch}) => {
 
   const windowSize = window.innerWidth;
 
-  const { mutate } = useMutation(currentLoc); 
+  // const { mutate } = useMutation(currentLoc); 
   const { mutate: mutateR } = useMutation(getReload); 
   const { mutate: mutateA } = useMutation(airPollution);  // by lat & lon
+
+  const { mutate: mutateL } = useMutation(currentLoc); 
+  const { mutate: mutateC } = useMutation(currentPollution); // hash(current loc)
 
 
   useEffect(() => {
@@ -48,25 +51,61 @@ const Paths = ({search, setSearch}) => {
     
   }, [weather, time, search]);
 
-  const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"
   useEffect(() => {
+    if (!window.location.hash) {
+      window.location.hash = "#/current-location";
+    } else {
+      checkHash();
+    }
+  }, [weather, time, search])
 
+  const currentLocation = () => {
+    const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"
+
+    // Using geolocation in order to get the user's lat & lon 
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
-        if(window.location.hash === "#/current-location"){
-          // console.log({latitude, longitude});
-          mutate({latitude, longitude}, {
-            onSuccess: (fetchedData) => {
-              const result = fetchedData.data;
-              setWeather(result)
-            }
-          })
-        }else if(window.location.hash === "#/weather?lat=51.5073219&lon=-0.1276474"){
-         checkHash()
-        } else{
-          window.location.hash = "#/weather?lat=51.5073219&lon=-0.1276474"
-        }
+
+        mutateL({latitude, longitude}, {
+          onSuccess: (fetchedData) => {
+            const result = fetchedData.data;
+            setWeather(result)
+            window.location.hash = "/current-location";
+          }
+        })
+
+        // get air pollution by geoLocation 
+        mutateC({latitude, longitude}, {
+          onSuccess: (fetchedData) => {
+            const result = fetchedData.data;
+            setPollution(result)
+          }
+        })
+
+        // get forecast by geoLocation 
+        fetch(`${API}/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`)
+        .then((response) => response.json())
+        .then((data) => {
+          const dailyForecasts = data.list.map((forecast) => {
+            const date = forecast.dt_txt.split(" ")[1];
+            const estimate = date.slice(0, 2);
+            const estimated = estimate >= 12 ? "PM" : "AM";
+
+            // Use `date-fns` to format the date
+            const formattedDate = format(new Date(forecast.dt * 1000), 'EEE');
+
+            return {
+              date: formattedDate,
+              hour: `${estimate}:00 ${estimated}`,
+              temperature: forecast.main.temp.toFixed(0),
+              icon: forecast.weather[0].icon,
+            };
+          });
+
+          setForecast(dailyForecasts);
+        })
+        .catch((error) => console.error("Error fetching the forecast data:", error));
         
       },
       (error) => {
@@ -75,7 +114,32 @@ const Paths = ({search, setSearch}) => {
           window.location.hash = defaultLocation;
       }
   );
-  }, [weather])
+  }
+  // useEffect(() => {
+
+  //   navigator.geolocation.getCurrentPosition(
+  //     (position) => {
+  //       const { latitude, longitude } = position.coords;
+  //       if(window.location.hash == "#/current-location"){
+  //         // console.log({latitude, longitude});
+  //         mutate({latitude, longitude}, {
+  //           onSuccess: (fetchedData) => {
+  //             const result = fetchedData.data;
+  //             setWeather(result)
+  //           }
+  //         })
+  //       }else if(window.location.hash == "#/weather?lat=51.5073219&lon=-0.1276474"){
+  //        checkHash()
+  //       } 
+        
+  //     },
+  //     (error) => {
+  //         // display an error if we cant get the users position
+  //         console.error('Error getting user location:', error);
+  //         window.location.hash = defaultLocation;
+  //     }
+  // );
+  // }, [weather])
 
       // checking the hash and getting the lat & lon 
     const checkHash = function () {
@@ -133,6 +197,7 @@ const Paths = ({search, setSearch}) => {
 
     // getting routes 
     const routes = new Map([
+      ["/current-location", currentLocation],
       ["/weather", searchedLocation],
     ]);
   return (
