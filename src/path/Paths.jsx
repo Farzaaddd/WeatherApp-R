@@ -43,6 +43,8 @@ const Paths = ({search, setSearch}) => {
   return (
     <>
       <Header search={search} setSearch={setSearch} setWeather={setWeather} setPollution={setPollution} setForecast={setForecast} />
+      {weather ? 
+      <>
       <div className={styles.display}>
         <div style={{ zIndex: 1 }}>
           <WeatherResponse weather={weather} checkDay={checkDay} />
@@ -85,7 +87,9 @@ const Paths = ({search, setSearch}) => {
         </div>
       )}
       <Footer />
-    </>
+      </> : null
+    }
+     </>
   );
 };
 

@@ -45,7 +45,7 @@ const SearchBox = ({search, setSearch, setWeather, setPollution, setForecast}) =
       } else {
         checkHash();
       }
-
+      
     }, [search])
 
     // searching for each city 
@@ -150,8 +150,6 @@ const SearchBox = ({search, setSearch, setWeather, setPollution, setForecast}) =
         }
     );
     }
-
-    
 
     // checking the hash and getting the lat & lon 
     const checkHash = function () {
