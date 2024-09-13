@@ -48,32 +48,32 @@ const Paths = ({search, setSearch}) => {
     
   }, [weather, time, search]);
 
-  useEffect(() => {
-    const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"
+  // useEffect(() => {
+  //   const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"
 
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        if(window.location.hash == "#/current-location"){
-          // console.log({latitude, longitude});
-          mutate({latitude, longitude}, {
-            onSuccess: (fetchedData) => {
-              const result = fetchedData.data;
-              setWeather(result)
-            }
-          })
-        }else if(window.location.hash == "#/weather?lat=51.5073219&lon=-0.1276474"){
-         checkHash()
-        }
+  //   navigator.geolocation.getCurrentPosition(
+  //     (position) => {
+  //       const { latitude, longitude } = position.coords;
+  //       if(window.location.hash == "#/current-location"){
+  //         // console.log({latitude, longitude});
+  //         mutate({latitude, longitude}, {
+  //           onSuccess: (fetchedData) => {
+  //             const result = fetchedData.data;
+  //             setWeather(result)
+  //           }
+  //         })
+  //       }else if(window.location.hash == "#/weather?lat=51.5073219&lon=-0.1276474"){
+  //        checkHash()
+  //       }
         
-      },
-      (error) => {
-          // display an error if we cant get the users position
-          console.error('Error getting user location:', error);
-          window.location.hash = defaultLocation;
-      }
-  );
-  }, [])
+  //     },
+  //     (error) => {
+  //         // display an error if we cant get the users position
+  //         console.error('Error getting user location:', error);
+  //         window.location.hash = defaultLocation;
+  //     }
+  // );
+  // }, [])
 
       // checking the hash and getting the lat & lon 
     const checkHash = function () {
