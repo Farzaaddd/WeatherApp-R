@@ -49,7 +49,8 @@ const Paths = ({search, setSearch}) => {
   }, [weather, time, search]);
 
   useEffect(() => {
-    // if(Paths.jsx:44 #/current-location)
+    const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"
+
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
