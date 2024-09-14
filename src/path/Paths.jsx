@@ -56,6 +56,7 @@ const Paths = ({search, setSearch}) => {
 
   useEffect(() => {
     const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"
+
     if (window.location.hash == "#/current-location") {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -109,6 +110,14 @@ const Paths = ({search, setSearch}) => {
             // display an error if we cant get the users position
             console.error('Error getting user location:', error);
             window.location.hash = defaultLocation;
+
+            mutateR(window.location.hash.split("?")[1], {
+              onSuccess: (fetchedData) => {
+                const result = fetchedData.data;
+                // console.log(result);
+                setWeather(result)
+              }
+            })
         }
       );
     } else {
