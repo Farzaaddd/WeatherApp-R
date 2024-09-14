@@ -114,7 +114,6 @@ const Paths = ({search, setSearch}) => {
             mutateR(window.location.hash.split("?")[1], {
               onSuccess: (fetchedData) => {
                 const result = fetchedData.data;
-                // console.log(result);
                 setWeather(result)
               }
             })
@@ -124,12 +123,12 @@ const Paths = ({search, setSearch}) => {
       mutateR(window.location.hash.split("?")[1], {
         onSuccess: (fetchedData) => {
           const result = fetchedData.data;
-          // console.log(result);
+          // console.log(location);
           setWeather(result)
         }
       })
     }
-  }, [weather])
+  }, [weather, location])
 
   // const currentLocation = () => {
   //   const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"
