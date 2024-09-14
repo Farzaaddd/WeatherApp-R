@@ -55,135 +55,187 @@ const Paths = ({search, setSearch}) => {
   }, [weather, time, search]);
 
   useEffect(() => {
-    if (!window.location.hash) {
-      window.location.hash = "#/current-location";
-      currentLocation()
+    const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"
+    if (window.location.hash == "#/current-location") {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          console.log({latitude, longitude});
+          
+          // mutateL({latitude, longitude}, {
+          //   onSuccess: (fetchedData) => {
+          //     const result = fetchedData.data;
+          //     setWeather(result)
+          //     // window.location.hash = "/current-location";
+          //   }
+          // })
+  
+          // get air pollution by geoLocation 
+          // mutateC({latitude, longitude}, {
+          //   onSuccess: (fetchedData) => {
+          //     const result = fetchedData.data;
+          //     setPollution(result)
+          //   }
+          // })
+  
+          // get forecast by geoLocation 
+          // fetch(`${API}/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`)
+          // .then((response) => response.json())
+          // .then((data) => {
+          //   const dailyForecasts = data.list.map((forecast) => {
+          //     const date = forecast.dt_txt.split(" ")[1];
+          //     const estimate = date.slice(0, 2);
+          //     const estimated = estimate >= 12 ? "PM" : "AM";
+  
+          //     // Use `date-fns` to format the date
+          //     const formattedDate = format(new Date(forecast.dt * 1000), 'EEE');
+  
+          //     return {
+          //       date: formattedDate,
+          //       hour: `${estimate}:00 ${estimated}`,
+          //       temperature: forecast.main.temp.toFixed(0),
+          //       icon: forecast.weather[0].icon,
+          //     };
+          //   });
+  
+          //   setForecast(dailyForecasts);
+          // })
+          // .catch((error) => console.error("Error fetching the forecast data:", error));
+          
+        },
+        (error) => {
+            // display an error if we cant get the users position
+            console.error('Error getting user location:', error);
+            window.location.hash = defaultLocation;
+        }
+      );
     } else {
       checkHash();
       mutateR(window.location.hash.split("?")[1], {
         onSuccess: (fetchedData) => {
           const result = fetchedData.data;
+          console.log(result);
           setWeather(result)
         }
       })
     }
-  }, [weather, window.location.hash])
+  }, [weather])
 
-  const currentLocation = () => {
-    const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"
+  // const currentLocation = () => {
+  //   const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"
 
-    // Using geolocation in order to get the user's lat & lon 
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
+  //   // Using geolocation in order to get the user's lat & lon 
+  //   navigator.geolocation.getCurrentPosition(
+  //     (position) => {
+  //       const { latitude, longitude } = position.coords;
 
-        mutateL({latitude, longitude}, {
-          onSuccess: (fetchedData) => {
-            const result = fetchedData.data;
-            setWeather(result)
-            // window.location.hash = "/current-location";
-          }
-        })
+  //       mutateL({latitude, longitude}, {
+  //         onSuccess: (fetchedData) => {
+  //           const result = fetchedData.data;
+  //           setWeather(result)
+  //           // window.location.hash = "/current-location";
+  //         }
+  //       })
 
-        // get air pollution by geoLocation 
-        mutateC({latitude, longitude}, {
-          onSuccess: (fetchedData) => {
-            const result = fetchedData.data;
-            setPollution(result)
-          }
-        })
+  //       // get air pollution by geoLocation 
+  //       mutateC({latitude, longitude}, {
+  //         onSuccess: (fetchedData) => {
+  //           const result = fetchedData.data;
+  //           setPollution(result)
+  //         }
+  //       })
 
-        // get forecast by geoLocation 
-        fetch(`${API}/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`)
-        .then((response) => response.json())
-        .then((data) => {
-          const dailyForecasts = data.list.map((forecast) => {
-            const date = forecast.dt_txt.split(" ")[1];
-            const estimate = date.slice(0, 2);
-            const estimated = estimate >= 12 ? "PM" : "AM";
+  //       // get forecast by geoLocation 
+  //       fetch(`${API}/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`)
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         const dailyForecasts = data.list.map((forecast) => {
+  //           const date = forecast.dt_txt.split(" ")[1];
+  //           const estimate = date.slice(0, 2);
+  //           const estimated = estimate >= 12 ? "PM" : "AM";
 
-            // Use `date-fns` to format the date
-            const formattedDate = format(new Date(forecast.dt * 1000), 'EEE');
+  //           // Use `date-fns` to format the date
+  //           const formattedDate = format(new Date(forecast.dt * 1000), 'EEE');
 
-            return {
-              date: formattedDate,
-              hour: `${estimate}:00 ${estimated}`,
-              temperature: forecast.main.temp.toFixed(0),
-              icon: forecast.weather[0].icon,
-            };
-          });
+  //           return {
+  //             date: formattedDate,
+  //             hour: `${estimate}:00 ${estimated}`,
+  //             temperature: forecast.main.temp.toFixed(0),
+  //             icon: forecast.weather[0].icon,
+  //           };
+  //         });
 
-          setForecast(dailyForecasts);
-        })
-        .catch((error) => console.error("Error fetching the forecast data:", error));
+  //         setForecast(dailyForecasts);
+  //       })
+  //       .catch((error) => console.error("Error fetching the forecast data:", error));
         
-      },
-      (error) => {
-          // display an error if we cant get the users position
-          console.error('Error getting user location:', error);
-          window.location.hash = defaultLocation;
-      }
-  );
-  }
+  //     },
+  //     (error) => {
+  //         // display an error if we cant get the users position
+  //         console.error('Error getting user location:', error);
+  //         window.location.hash = defaultLocation;
+  //     }
+  //   );
+  // }
 
       // checking the hash and getting the lat & lon 
-    const checkHash = function () {
-      const requestURL = window.location.hash.slice(1);
-      const [route, query] = requestURL.includes
-        ? requestURL.split("?")
-        : [requestURL];
+    // const checkHash = function () {
+    //   const requestURL = window.location.hash.slice(1);
+    //   const [route, query] = requestURL.includes
+    //     ? requestURL.split("?")
+    //     : [requestURL];
         
-      routes.get(route) ? routes.get(route)(query) : null;
+    //   routes.get(route) ? routes.get(route)(query) : null;
       
       
-      // get air pollution by query 
-      query && mutateA({query}, {
-        onSuccess: (fetchedData) => {
-          const result = fetchedData.data;
-          setPollution(result)
-        }
-      })
+    //   // get air pollution by query 
+    //   query && mutateA({query}, {
+    //     onSuccess: (fetchedData) => {
+    //       const result = fetchedData.data;
+    //       setPollution(result)
+    //     }
+    //   })
 
-      // get forecast by query 
-    query && fetch(`${API}/data/2.5/forecast?${query}&units=metric&appid=${API_KEY}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const dailyForecasts = data.list.map((forecast) => {
-          const date = forecast.dt_txt.split(" ")[1];
-          const estimate = date.slice(0, 2);
-          const estimated = estimate >= 12 ? "PM" : "AM";
+    //   // get forecast by query 
+    // query && fetch(`${API}/data/2.5/forecast?${query}&units=metric&appid=${API_KEY}`)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     const dailyForecasts = data.list.map((forecast) => {
+    //       const date = forecast.dt_txt.split(" ")[1];
+    //       const estimate = date.slice(0, 2);
+    //       const estimated = estimate >= 12 ? "PM" : "AM";
 
-          // Use `date-fns` to format the date
-          const formattedDate = format(new Date(forecast.dt * 1000), 'EEE');
+    //       // Use `date-fns` to format the date
+    //       const formattedDate = format(new Date(forecast.dt * 1000), 'EEE');
 
-          return {
-            date: formattedDate,
-            hour: `${estimate}:00 ${estimated}`,
-            temperature: forecast.main.temp.toFixed(0),
-            icon: forecast.weather[0].icon,
-          };
-        });
+    //       return {
+    //         date: formattedDate,
+    //         hour: `${estimate}:00 ${estimated}`,
+    //         temperature: forecast.main.temp.toFixed(0),
+    //         icon: forecast.weather[0].icon,
+    //       };
+    //     });
 
-        setForecast(dailyForecasts);
-      })
-      .catch((error) => console.error("Error fetching the forecast data:", error));
-    };
+    //     setForecast(dailyForecasts);
+    //   })
+    //   .catch((error) => console.error("Error fetching the forecast data:", error));
+    // };
   
     // Getting the location that searched 
-    const searchedLocation = (query) => {
-      query && mutateR(query, {
-        onSuccess: (fetchedData) => {
-          const result = fetchedData.data;
-          setWeather(result)
-        }
-      })
-    };
+    // const searchedLocation = (query) => {
+    //   query && mutateR(query, {
+    //     onSuccess: (fetchedData) => {
+    //       const result = fetchedData.data;
+    //       setWeather(result)
+    //     }
+    //   })
+    // };
 
     // getting routes 
-    const routes = new Map([
-      ["/current-location", currentLocation],
-      ["/weather", searchedLocation],
-    ]);
+    // const routes = new Map([
+    //   ["/current-location", currentLocation],
+    //   ["/weather", searchedLocation],
+    // ]);
   return (
     <>
       {/* {weather && 
