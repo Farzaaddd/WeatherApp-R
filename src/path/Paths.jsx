@@ -24,12 +24,15 @@ const Paths = ({search, setSearch}) => {
 
   const windowSize = window.innerWidth;
 
-  // const { mutate } = useMutation(currentLoc); 
+  // get weather by reloading
   const { mutate: mutateR } = useMutation(getReload); 
+  
+  // get air pollution
   const { mutate: mutateA } = useMutation(airPollution);  // by lat & lon
-
-  const { mutate: mutateL } = useMutation(currentLoc); 
   const { mutate: mutateC } = useMutation(currentPollution); // hash(current loc)
+ 
+  // get weather by current loc
+  const { mutate: mutateL } = useMutation(currentLoc); 
 
 
   useEffect(() => {
@@ -51,13 +54,13 @@ const Paths = ({search, setSearch}) => {
     
   }, [weather, time, search]);
 
-  useEffect(() => {
-    if (!window.location.hash) {
-      window.location.hash = "#/current-location";
-    } else {
-      checkHash();
-    }
-  }, [weather, time, search])
+  // useEffect(() => {
+  //   if (!window.location.hash) {
+  //     window.location.hash = "#/current-location";
+  //   } else {
+  //     checkHash();
+  //   }
+  // }, [weather])
 
   const currentLocation = () => {
     const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"
@@ -115,31 +118,6 @@ const Paths = ({search, setSearch}) => {
       }
   );
   }
-  // useEffect(() => {
-
-  //   navigator.geolocation.getCurrentPosition(
-  //     (position) => {
-  //       const { latitude, longitude } = position.coords;
-  //       if(window.location.hash == "#/current-location"){
-  //         // console.log({latitude, longitude});
-  //         mutate({latitude, longitude}, {
-  //           onSuccess: (fetchedData) => {
-  //             const result = fetchedData.data;
-  //             setWeather(result)
-  //           }
-  //         })
-  //       }else if(window.location.hash == "#/weather?lat=51.5073219&lon=-0.1276474"){
-  //        checkHash()
-  //       } 
-        
-  //     },
-  //     (error) => {
-  //         // display an error if we cant get the users position
-  //         console.error('Error getting user location:', error);
-  //         window.location.hash = defaultLocation;
-  //     }
-  // );
-  // }, [weather])
 
       // checking the hash and getting the lat & lon 
     const checkHash = function () {
@@ -149,7 +127,7 @@ const Paths = ({search, setSearch}) => {
         : [requestURL];
         
       routes.get(route) ? routes.get(route)(query) : null;
-      console.log(query);
+      // console.log(query);
       
       
       // get air pollution by query 
