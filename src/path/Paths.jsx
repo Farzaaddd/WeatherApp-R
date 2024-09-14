@@ -54,13 +54,11 @@ const Paths = ({search, setSearch}) => {
     
   }, [weather, time, search]);
 
-  // useEffect(() => {
-  //   if (!window.location.hash) {
-  //     window.location.hash = "#/current-location";
-  //   } else {
-  //     checkHash();
-  //   }
-  // }, [weather])
+  useEffect(() => {
+    if (!window.location.hash) {
+      checkHash();
+    } 
+  }, [weather])
 
   const currentLocation = () => {
     const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"
@@ -127,7 +125,7 @@ const Paths = ({search, setSearch}) => {
         : [requestURL];
         
       routes.get(route) ? routes.get(route)(query) : null;
-      // console.log(query);
+      console.log(query);
       
       
       // get air pollution by query 
