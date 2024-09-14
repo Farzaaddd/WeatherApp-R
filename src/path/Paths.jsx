@@ -60,15 +60,17 @@ const Paths = ({search, setSearch}) => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          console.log({latitude, longitude});
+          // console.log({latitude, longitude});
           
-          // mutateL({latitude, longitude}, {
-          //   onSuccess: (fetchedData) => {
-          //     const result = fetchedData.data;
-          //     setWeather(result)
-          //     // window.location.hash = "/current-location";
-          //   }
-          // })
+          mutateL({latitude, longitude}, {
+            onSuccess: (fetchedData) => {
+              const result = fetchedData.data;
+              // console.log(result);
+              
+              setWeather(result)
+              // window.location.hash = "/current-location";
+            }
+          })
   
           // get air pollution by geoLocation 
           // mutateC({latitude, longitude}, {
@@ -110,11 +112,10 @@ const Paths = ({search, setSearch}) => {
         }
       );
     } else {
-      checkHash();
       mutateR(window.location.hash.split("?")[1], {
         onSuccess: (fetchedData) => {
           const result = fetchedData.data;
-          console.log(result);
+          // console.log(result);
           setWeather(result)
         }
       })

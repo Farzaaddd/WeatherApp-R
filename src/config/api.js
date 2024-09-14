@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = "https://api.openweathermap.org";
-const API_KEY = "e0ff8bd3aeecb0b2e7a790a8585fab7e";
+const API_KEY = "a8961232a18d1f1e90ff880305722817";
 
 // search cities
 const GetSearch = (search) =>
