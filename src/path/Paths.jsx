@@ -60,7 +60,12 @@ const Paths = ({search, setSearch}) => {
       currentLocation()
     } else {
       checkHash();
-      searchedLocation()
+      mutateR(window.location.hash.split("?")[1], {
+        onSuccess: (fetchedData) => {
+          const result = fetchedData.data;
+          setWeather(result)
+        }
+      })
     }
   }, [weather])
 
