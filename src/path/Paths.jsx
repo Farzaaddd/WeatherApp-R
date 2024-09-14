@@ -67,7 +67,7 @@ const Paths = ({search, setSearch}) => {
         }
       })
     }
-  }, [weather])
+  }, [weather, window.location.hash])
 
   const currentLocation = () => {
     const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"
