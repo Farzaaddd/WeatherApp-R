@@ -56,8 +56,8 @@ const Paths = ({search, setSearch}) => {
 
   useEffect(() => {
     if (!window.location.hash) {
-      checkHash();
-    } else{
+      window.location.hash = "#/current-location";
+    } else {
       checkHash();
     }
   }, [weather])
@@ -127,7 +127,7 @@ const Paths = ({search, setSearch}) => {
         : [requestURL];
         
       routes.get(route) ? routes.get(route)(query) : null;
-      // console.log(query);
+      // console.log({query}, {route});
       
       
       // get air pollution by query 
