@@ -57,8 +57,10 @@ const Paths = ({search, setSearch}) => {
   useEffect(() => {
     if (!window.location.hash) {
       window.location.hash = "#/current-location";
+      currentLocation()
     } else {
       checkHash();
+      searchedLocation()
     }
   }, [weather])
 
