@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = "https://api.openweathermap.org";
-const API_KEY = "a8961232a18d1f1e90ff880305722817";
+const API_KEY = "e0ff8bd3aeecb0b2e7a790a8585fab7e";
 
 // search cities
 const GetSearch = (search) =>
@@ -43,6 +43,10 @@ const Pollution = (location) =>
 const airPollution = ({ query }) =>
   axios.get(`${API}/data/2.5/air_pollution?${query}&appid=${API_KEY}`);
 
+// Air population by reloading and hash page
+const airPollution3 = (current) =>
+  axios.get(`${API}/data/2.5/air_pollution?${current}&appid=${API_KEY}`);
+
 // Air population by current loc hash page
 const currentPollution = ({ latitude, longitude }) =>
   axios.get(
@@ -60,5 +64,6 @@ export {
   newYorkClimate,
   Pollution,
   airPollution,
+  airPollution3,
   currentPollution,
 };
