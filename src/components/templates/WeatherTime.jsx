@@ -52,7 +52,7 @@ const WeatherTime = ({ checkDay, time, setTime, greeting }) => {
         const userInput = prompt("May I have your name please?");
         if (userInput == null || userInput.trim() === "") {
           setUsername("Dear!");
-          localStorage.setItem("username", "Dear!");
+          localStorage.setItem("username", "Dear");
         } else {
           setUsername(userInput);
           localStorage.setItem("username", userInput);
