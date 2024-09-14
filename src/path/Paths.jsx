@@ -129,7 +129,6 @@ const Paths = ({search, setSearch}) => {
         : [requestURL];
         
       routes.get(route) ? routes.get(route)(query) : null;
-      // console.log({query}, {route});
       
       
       // get air pollution by query 
@@ -167,7 +166,7 @@ const Paths = ({search, setSearch}) => {
   
     // Getting the location that searched 
     const searchedLocation = (query) => {
-      mutateR(query, {
+      query && mutateR(query, {
         onSuccess: (fetchedData) => {
           const result = fetchedData.data;
           setWeather(result)
