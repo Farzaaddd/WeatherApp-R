@@ -162,7 +162,7 @@ const SearchBox = ({search, setSearch, setWeather, setPollution, setForecast}) =
       
       
       // get air pollution by query 
-      mutateA({query}, {
+      query && mutateA({query}, {
         onSuccess: (fetchedData) => {
           const result = fetchedData.data;
           setPollution(result)
@@ -170,7 +170,7 @@ const SearchBox = ({search, setSearch, setWeather, setPollution, setForecast}) =
       })
 
       // get forecast by query 
-    fetch(`${API}/data/2.5/forecast?${query}&units=metric&appid=${API_KEY}`)
+    query && fetch(`${API}/data/2.5/forecast?${query}&units=metric&appid=${API_KEY}`)
       .then((response) => response.json())
       .then((data) => {
         const dailyForecasts = data.list.map((forecast) => {

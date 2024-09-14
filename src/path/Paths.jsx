@@ -57,7 +57,9 @@ const Paths = ({search, setSearch}) => {
   useEffect(() => {
     if (!window.location.hash) {
       checkHash();
-    } 
+    } else{
+      checkHash();
+    }
   }, [weather])
 
   const currentLocation = () => {
@@ -72,7 +74,7 @@ const Paths = ({search, setSearch}) => {
           onSuccess: (fetchedData) => {
             const result = fetchedData.data;
             setWeather(result)
-            window.location.hash = "/current-location";
+            // window.location.hash = "/current-location";
           }
         })
 
@@ -125,11 +127,11 @@ const Paths = ({search, setSearch}) => {
         : [requestURL];
         
       routes.get(route) ? routes.get(route)(query) : null;
-      console.log(query);
+      // console.log(query);
       
       
       // get air pollution by query 
-      mutateA({query}, {
+      query && mutateA({query}, {
         onSuccess: (fetchedData) => {
           const result = fetchedData.data;
           setPollution(result)
@@ -137,7 +139,7 @@ const Paths = ({search, setSearch}) => {
       })
 
       // get forecast by query 
-    fetch(`${API}/data/2.5/forecast?${query}&units=metric&appid=${API_KEY}`)
+    query && fetch(`${API}/data/2.5/forecast?${query}&units=metric&appid=${API_KEY}`)
       .then((response) => response.json())
       .then((data) => {
         const dailyForecasts = data.list.map((forecast) => {
