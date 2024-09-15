@@ -109,7 +109,7 @@ const Paths = ({search, setSearch}) => {
         },
         (error) => {
             // display an error if we cant get the users position
-            // console.error('Error getting user location:', error);
+            console.error('Error getting user location:', error);
             window.location.hash = defaultLocation;
 
             mutateR(window.location.hash.split("?")[1], {

@@ -5,7 +5,6 @@ import { useMutation } from "@tanstack/react-query";
 import { airPollution, API, API_KEY, currentLoc, currentPollution, getReload, GetSearch, getWeather, Pollution } from "../../config/api";
 
 import { format } from 'date-fns';
-import { v4 as uuidv4 } from 'uuid';
 
 import SearchIcon from '@mui/icons-material/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -149,7 +148,7 @@ const SearchBox = ({search, setSearch, setWeather, setPollution, setForecast}) =
         },
         (error) => {
             // display an error if we cant get the users position
-            // console.error('Error getting user location:', error);
+            console.error('Error getting user location:', error);
             window.location.hash = defaultLocation;
         }
     );
@@ -232,7 +231,7 @@ const SearchBox = ({search, setSearch, setWeather, setPollution, setForecast}) =
             />
             <div className="search-result">
             {display ? <ul className="view-list active">
-                {display.map(loc =>  <li className="view-item" key={uuidv4()}>
+                {display.map(loc =>  <li className="view-item" >
             <a href={`#/weather?lat=${loc.lat}&lon=${loc.lon}`} className="item-link has-state" onClick={() => weatherHandler(loc.lat, loc.lon)}>
           <div className="view-items">
             <div>
