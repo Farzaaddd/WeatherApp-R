@@ -66,8 +66,8 @@ const PersonalAccessibility = () => {
             <span className="badge"></span>
           </div>
 
-          <div class="notifications-messages" style={{display: isLoading ? "block" : "none"}}>
-            <div class="notifications">
+          <div className="notifications-messages" style={{display: isLoading ? "block" : "none"}}>
+            <div className="notifications">
               <div> 
                 <LightbulbOutlinedIcon/>
                 Did you know you can easily change the current profile to your own photo?</div>

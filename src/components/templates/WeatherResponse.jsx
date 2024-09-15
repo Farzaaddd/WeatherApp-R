@@ -1,9 +1,9 @@
-import "./WeatherResponse.css"
 import {backgroundOpt, wIcon} from "../../helper/helper";
 import icons from "../../constants/icons";
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
+import "./WeatherResponse.css"
 const WeatherResponse = ({weather, checkDay}) => {
   
   return (

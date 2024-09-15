@@ -175,8 +175,8 @@ const Paths = ({search, setSearch}) => {
         setForecast(dailyForecasts);
       })
       .catch((error) => console.error("Error fetching the forecast data:", error));
-    }
-
+    
+      
     mutateA(window.location.hash.split("?")[1], {
       onSuccess: (fetchedData) => {
         const result = fetchedData.data;
@@ -184,6 +184,8 @@ const Paths = ({search, setSearch}) => {
         setPollution(result)
       }
     })
+    }
+    
   }, [weather, location])
 
   return (
@@ -231,7 +233,7 @@ const Paths = ({search, setSearch}) => {
         </div>
       )}
       <Footer />
-      </>
+    </>
   );
 };
 

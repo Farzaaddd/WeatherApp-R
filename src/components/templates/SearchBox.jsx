@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react"
+
 import { useMutation } from "@tanstack/react-query";
+
 import { airPollution, API, API_KEY, currentLoc, currentPollution, getReload, GetSearch, getWeather, Pollution } from "../../config/api";
+
 import { format } from 'date-fns';
+import { v4 as uuidv4 } from 'uuid';
 
 import SearchIcon from '@mui/icons-material/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -210,7 +214,7 @@ const SearchBox = ({search, setSearch, setWeather, setPollution, setForecast}) =
       ["/current-location", currentLocation],
       ["/weather", searchedLocation],
     ]);
-
+    
   return (
     <>
         <div className="search-form">
@@ -228,7 +232,7 @@ const SearchBox = ({search, setSearch, setWeather, setPollution, setForecast}) =
             />
             <div className="search-result">
             {display ? <ul className="view-list active">
-                {display.map(loc =>  <li className="view-item" key={loc.lat}>
+                {display.map(loc =>  <li className="view-item" key={uuidv4()}>
             <a href={`#/weather?lat=${loc.lat}&lon=${loc.lon}`} className="item-link has-state" onClick={() => weatherHandler(loc.lat, loc.lon)}>
           <div className="view-items">
             <div>

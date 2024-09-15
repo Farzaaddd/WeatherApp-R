@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { newYorkClimate } from "../../config/api";
 import icons from "../../constants/icons";
+
 import Loader from "./Loader";
 
 const NewYork = () => {

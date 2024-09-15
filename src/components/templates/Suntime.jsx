@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SunCalc from 'suncalc';
 
 import icons from "../../constants/icons";
+
 import { cities, sunTime } from "../../constants/Suntime";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
