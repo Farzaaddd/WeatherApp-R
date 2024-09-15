@@ -149,7 +149,7 @@ const SearchBox = ({search, setSearch, setWeather, setPollution, setForecast}) =
         },
         (error) => {
             // display an error if we cant get the users position
-            console.error('Error getting user location:', error);
+            // console.error('Error getting user location:', error);
             window.location.hash = defaultLocation;
         }
     );
