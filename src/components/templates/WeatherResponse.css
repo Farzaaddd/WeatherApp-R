@@ -28,11 +28,11 @@
 }
 
 .header-icon .circle {
-  width: 65px;
-  height: 65px;
+  width: 50px;
+  height: 50px;
   position: absolute;
-  top: -2px;
-  right: -6px;
+  top: 6px;
+  right: 4px;
   border-radius: 50%;
   /* background-image: url("../../assets/icons/openweathermap/10n.svg"); */
   z-index: 10;
